@@ -35,9 +35,9 @@ typedef union {
     };
 } EepromHeader;
 
-__attribute__((unused)) static const GadgetEeprom* eeprom;
+__attribute__((unused)) static const EmuEeprom* eeprom;
 
-void eepromSelect(const GadgetEeprom* const e)
+void wEepromSelect(const EmuEeprom* const e)
 {
     SDL_assert(e);
     eeprom = e;
@@ -152,7 +152,7 @@ static BspResult eepromFileCheck()
     return result;
 }
 
-BspResult eepromRead(uint32_t address, uint8_t* dest, uint32_t length)
+BspResult bspEepromRead(uint32_t address, uint8_t* dest, uint32_t length)
 {
     SDL_assert(eeprom);
     BspResult result = BSP_OK;
@@ -179,7 +179,7 @@ BspResult eepromRead(uint32_t address, uint8_t* dest, uint32_t length)
     return result;
 }
 
-BspResult eepromWrite(uint32_t address, uint8_t* data, uint32_t length)
+BspResult bspEepromWrite(uint32_t address, uint8_t* data, uint32_t length)
 {
     SDL_assert(eeprom);
     BspResult result = BSP_OK;
