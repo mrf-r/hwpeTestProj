@@ -84,12 +84,12 @@ void panelConstruct(SDL_Renderer* rend)
         x += PAN_BUT_INC;
     }
 
-    static const GadgetEeprom eeprom = {
+    static const EmuEeprom eeprom = {
         .name = "EEPROM_test",
         .filepath = "eeprom.bin",
         .size = 64
     };
-    eepromSelect(&eeprom);
+    wEepromSelect(&eeprom);
 
     wMidiInit(&wmidi_io, 70, 0, rend, "MPK", "MPK", 31250, 115200);
 
@@ -142,6 +142,7 @@ void panelHandleMidi(MidiMessageT m)
 
 void panelLoop(uint32_t clock)
 {
+    (void)clock;
     MidiTsMessageT mt;
     while (MIDI_RET_OK == midiRead(&mt)) {
         synthHandleMidi(mt.mes);

@@ -46,7 +46,7 @@ static const uint16_t synth_patch_default[SYNTH_PARAMETERS_COUNT] = {
 void synthLoadPatch()
 {
     uint16_t synth_patch[SYNTH_PARAMETERS_COUNT];
-    BspResult res = eepromRead(EEPROM_SYNTHPATCH_OFFSET, (uint8_t*)synth_patch, sizeof(synth_patch));
+    BspResult res = bspEepromRead(EEPROM_SYNTHPATCH_OFFSET, (uint8_t*)synth_patch, sizeof(synth_patch));
     MidiMessageT m = {
         .cn = ~MIDI_CN_LOCALPANEL, // anything but localpanel. TODO: make it more clear
         .cin = MIDI_CIN_CONTROLCHANGE,
@@ -77,7 +77,7 @@ void synthSavePatch()
     for (unsigned i = 0; i < SYNTH_PARAMETERS_COUNT; i++) {
         synth_patch[i] = *parameter_table[i].parameter;
     }
-    eepromWrite(EEPROM_SYNTHPATCH_OFFSET, (uint8_t*)synth_patch, sizeof(synth_patch));
+    bspEepromWrite(EEPROM_SYNTHPATCH_OFFSET, (uint8_t*)synth_patch, sizeof(synth_patch));
 }
 
 void synthHandleMidi(MidiMessageT m)
