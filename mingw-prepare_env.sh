@@ -13,7 +13,8 @@
 
 # additional libs for emulators ----------------------------
 pacman -S --noconfirm \
-pkg-config \
+$MINGW_PACKAGE_PREFIX-gcc \
+$MINGW_PACKAGE_PREFIX-cmake \
 $MINGW_PACKAGE_PREFIX-SDL2 \
 $MINGW_PACKAGE_PREFIX-libserialport \
 $MINGW_PACKAGE_PREFIX-portaudio \
