@@ -1,0 +1,3 @@
+add_subdirectory(hwPanelEmulator)
+add_subdirectory(mbwmidi)
+add_subdirectory(minimalgraphics)
